@@ -38,7 +38,7 @@ html, body {
 
 #topnav img.logo {
     width: 130px;
-    padding-top:10px;
+    padding-left:10px;
 }
 
 #topnav ul {
@@ -49,7 +49,7 @@ html, body {
 }
 
 #topnav ul li {
-    margin-right: 30px;
+    margin-right: 20px;
     padding-top: 80px;
 }
 
