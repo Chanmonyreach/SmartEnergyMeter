@@ -26,10 +26,10 @@ html, body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 120px;
+    height: 100px;
     background: rgba(0, 150, 136, 0.7);
     backdrop-filter: blur(5px);
-    padding: 1px 30px;
+    padding: 1px 50px;
     z-index: 3;
     display: flex;
     align-items: center;
@@ -37,7 +37,7 @@ html, body {
 }
 
 #topnav img.logo {
-    width: 140px;
+    width: 130px;
 }
 
 #topnav ul {
@@ -49,6 +49,7 @@ html, body {
 
 #topnav ul li {
     margin-right: 20px;
+    padding-top: 80px;
 }
 
 #topnav ul li:last-child {
@@ -59,15 +60,33 @@ html, body {
     text-decoration: none;
     color: #fff;
     font-size: 16px;
+    position: relative; /* Add position relative to create a positioning context */
 }
 
-#topnav ul li a.active::after {
+#topnav ul li a::after {
     content: '';
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: #fff;
-    margin-top: 3px;
+    position: absolute;
+    bottom: -3px; /* Adjust this value to change the distance from the letter */
+    left: 0;
+    width: 0; /* Initially, the line is invisible */
+    height: 2px; /* Height of the line */
+    background-color: #fff; /* Color of the line */
+    transition: width 0.3s ease; /* Transition effect for width change */
+}
+#topnav ul li a.active::after {
+    width: 100%; /* Expand the width of the line for the active link */
+}
+
+#topnav ul li a.active {
+    color: #c7c7c7; /* Change the color of the active link */
+}
+
+#topnav ul li a:hover::after {
+    width: 100%; /* When hovering, expand the width of the line to cover the letter */
+}
+
+#topnav ul li ai {
+    margin-right: 10px;
 }
 
 .content-wrapper {
