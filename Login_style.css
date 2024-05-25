@@ -1,0 +1,191 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    background: #222;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#banner {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('Image/Background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.LOGO {
+    width: 140px;
+    position: absolute;
+    top: 4%;
+    left: 10%;
+    z-index: 4;
+}
+
+#topnav {
+    position: fixed;
+    right: 30px;
+    top: 20px;
+    z-index: 3;
+    transition: transform 0.3s ease;
+}
+
+#topnav.moved {
+    transform: translateX(-300px); /* Adjust this value if the sidebar width changes */
+}
+
+#topnav ul {
+    display: flex;
+    list-style: none;
+}
+
+#topnav ul li {
+    margin: 20px;
+    display: inline-block;
+    position: relative;
+}
+
+#topnav ul li a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    position: relative;
+}
+
+#topnav ul li a::after {
+    content: '';
+    height: 3px;
+    width: 0;
+    background: #c7c7c7;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    transition: width 0.5s;
+}
+
+#topnav ul li:hover a::after {
+    width: 100%;
+}
+
+#topnav ul li a.active::after {
+    width: 100%;
+}
+
+.content-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.content-section {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    opacity: 0;
+    transition: left 0.2s, opacity 0.2s;
+    backdrop-filter: blur(10px);
+}
+
+.content-section.active {
+    left: 0;
+    opacity: 1;
+}
+
+.content-section.left-in {
+    left: -100%;
+    opacity: 0;
+}
+
+.content-section.right-in {
+    left: 100%;
+    opacity: 0;
+}
+
+.content-section.left-out {
+    left: -100%;
+    opacity: 0;
+}
+
+.content-section.right-out {
+    left: 100%;
+    opacity: 0;
+}
+
+h2 {
+    font-size: 2em;
+    color: #333;
+}
+
+p {
+    font-size: 1em;
+    color: #666;
+}
+
+#sidenav {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    right: -300px;
+    top: 0;
+    background: rgba(0, 150, 136, 0.7);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease;
+    padding: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidenav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+#sidenav ul li {
+    margin: 15px 0;
+    position: relative;
+}
+
+#sidenav ul li a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+#sidenav ul li a:hover {
+    color: #333;
+    background-color: #c7c7c7;
+}
+
+#sidenav ul li ai {
+    margin-right: 10px;
+}
+
+#accountBtnTopbar i {
+    display: block;
+    margin: 0 auto;
+    font-size: 1.75em;
+}
+#accountBtnSidebar {
+    width: 20px; /* Adjust the size as needed */
+    position: absolute;
+    top: 1px; /* Adjust the distance from the top */
+    right: 1px; /* Adjust the distance from the right */
+    cursor: pointer; /* Add cursor pointer for better UX */
+}

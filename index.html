@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Energy Meter</title>
+    <link rel="stylesheet" href="index_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <section id="banner">
+        <img src="Image/LOGO.png" class="LOGO" alt="Logo">
+        <div class="content">
+            <h1>Smart Energy Meter</h1>
+            <p>Welcome to Smart Energy Meter's website.<br>Thank you for using our service!</p>
+            <div>
+                <a href="#" class="button" id="loginBtn">Login</a>
+            </div>
+        </div>
+        <div id="topnav">
+            <nav>
+                <ul>
+                    <li><a href="#" id="menuBtn"><i class="fas fa-bars" style="font-size: 1.75em;"></i></a></li>
+            </nav>
+        </div> 
+        <div id="sidenav">
+            <nav>
+                <ul>
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="#" id="sidenavRegisterBtn">Register</a></li>
+                    <li><a href="#feature">About</a></li>
+                </ul>                
+            </nav>
+        </div>  
+    </section>
+
+    <section id="feature">
+        <div class="title-text">
+            <p>Feature</p>
+            <h1>About Us</h1>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/">
+                    <i class="fab fa-facebook fa-2x" style="color:#3b5998;"></i>
+                </a>
+                <a href="https://www.instagram.com/">
+                    <i class="fab fa-instagram fa-2x" style="color:#E4405F;"></i>
+                </a>
+                <a href="https://t.me/">
+                    <i class="fab fa-telegram fa-2x" style="color:#0088cc;"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Form -->
+    <div class="form-container" id="loginForm">
+        <form>
+            <h2 style="color: white; text-align: center;">Login</h2>
+            <div class="input-container">
+                <label for="username"><i class="fas fa-user"></i></label>
+                <input type="text" id="username" name="username" required placeholder="Username">
+            </div>
+            <div class="input-container">
+                <label for="password"><i class="fas fa-lock"></i></label>
+                <input type="password" id="password" name="password" required placeholder="Password">
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <!-- Signup Form -->
+    <div class="form-container" id="registerForm">
+        <form>
+            <h2 style="color: white; text-align: center;">Register</h2>
+            <div class="input-container">
+                <label for="newUsername"><i class="fas fa-user"></i></label>
+                <input type="text" id="newUsername" name="newUsername" required placeholder="Username">
+            </div>
+            <div class="input-container">
+                <label for="newPassword"><i class="fas fa-lock"></i></label>
+                <input type="password" id="newPassword" name="newPassword" required placeholder="Password">
+            </div>
+            <div class="input-container">
+                <label for="email"><i class="fas fa-envelope"></i></label>
+                <input type="email" id="email" name="email" required placeholder="Email">
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script src="index_script.js"></script>
+</body>
+</html>
