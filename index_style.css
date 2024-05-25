@@ -1,93 +1,565 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Energy Meter</title>
-    <link rel="stylesheet" href="index_style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-    <section id="banner">
-        <img src="Image/LOGO.png" class="LOGO" alt="Logo">
-        <div class="content">
-            <h1>Smart Energy Meter</h1>
-            <p>Welcome to Smart Energy Meter's website.<br>Thank you for using our service!</p>
-            <div>
-                <a href="#" class="button" id="loginBtn">Login</a>
-            </div>
-        </div>
-        <div id="topnav">
-            <nav>
-                <ul>
-                    <li><a href="#" id="menuBtn"><i class="fas fa-bars" style="font-size: 1.75em;"></i></a></li>
-            </nav>
-        </div> 
-        <div id="sidenav">
-            <nav>
-                <ul>
-                    <li><a href="Home.html">Home</a></li>
-                    <li><a href="#" id="sidenavRegisterBtn">Register</a></li>
-                    <li><a href="#feature">About</a></li>
-                </ul>                
-            </nav>
-        </div>  
-    </section>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans', sans-serif;
+}
 
-    <section id="feature">
-        <div class="title-text">
-            <p>Feature</p>
-            <h1>About Us</h1>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/">
-                    <i class="fab fa-facebook fa-2x" style="color:#3b5998;"></i>
-                </a>
-                <a href="https://www.instagram.com/">
-                    <i class="fab fa-instagram fa-2x" style="color:#E4405F;"></i>
-                </a>
-                <a href="https://t.me/">
-                    <i class="fab fa-telegram fa-2x" style="color:#0088cc;"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+html, body {
+    height: 100%;
+    width: 100%;
+    background: #222;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
 
-    <!-- Login Form -->
-    <div class="form-containerLog" id="loginForm">
-        <form>
-            <h2 style="color: white; text-align: center;">Login</h2>
-            <div class="input-containerLog">
-                <label for="username"><i class="fas fa-user"></i></label>
-                <input type="text" id="username" name="username" required placeholder="Username">
-            </div>
-            <div class="input-containerLog">
-                <label for="password"><i class="fas fa-lock"></i></label>
-                <input type="password" id="password" name="password" required placeholder="Password">
-            </div>
-            <button type="submit">Login</button>
-        </form>
-    </div>
+#banner {
+    width: auto;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0, 0, 0, 0.25)), url('Image/Background.jpg');
+    background-size: cover;
+    background-position: center;
+}
 
-    <!-- Signup Form -->
-    <div class="form-containerReg " id="registerForm">
-        <form>
-            <h2 style="color: white; text-align: center;">Register</h2>
-            <div class="input-containerReg">
-                <label for="newUsername"><i class="fas fa-user"></i></label>
-                <input type="text" id="newUsername" name="newUsername" required placeholder="Username">
-            </div>
-            <div class="input-containerReg">
-                <label for="newPassword"><i class="fas fa-lock"></i></label>
-                <input type="password" id="newPassword" name="newPassword" required placeholder="Password">
-            </div>
-            <div class="input-containerReg">
-                <label for="email"><i class="fas fa-envelope"></i></label>
-                <input type="email" id="email" name="email" required placeholder="Email">
-            </div>
-            <button type="submit">Register</button>
-        </form>
-    </div>
+.navbar {
+    width: 85%;
+    margin: auto;
+    padding: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
-    <script src="index_script.js"></script>
-</body>
-</html>
+.LOGO {
+    width: 100px;
+    position: absolute;
+    top: 4%;
+    left: 10%;
+}
+
+/* Your existing CSS styles for login.html */
+#topnav {
+    position: fixed;
+    right: 30px;
+    top: 20px;
+    z-index: 3;
+    transition: transform 0.3s ease;
+}
+
+#topnav.moved {
+    transform: translateX(-300px); /* Adjust this value if the sidebar width changes */
+}
+
+#topnav ul {
+    display: flex;
+    list-style: none;
+}
+
+#topnav ul li {
+    margin: 2%;
+    display: inline-block;
+    position: relative;
+}
+
+#topnav ul li a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    position: relative;
+}
+
+#sidenav {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    right: -300px;
+    top: 0;
+    background: rgba(0, 150, 136, 0.7);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease;
+    padding: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidenav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+#sidenav ul li {
+    margin: 15px 0;
+    position: relative;
+}
+
+#sidenav ul li a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+#sidenav ul li a:hover {
+    color: #333;
+    background-color: #c7c7c7;
+}
+
+#sidenav ul li ai {
+    margin-right: 10px;
+}
+
+#menuBtn {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Increase the gap to create more space between icons */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+#menuBtn :hover {
+    transform: scale(1.2); /* Enlarge the icon when hovered */
+}
+.content {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: #fff;
+}
+
+.content h1 {
+    font-size: 70px;
+    margin-top: 80px;
+}
+
+.content p {
+    margin: 20px auto;
+    font-weight: 100;
+    line-height: 25px;
+}
+
+.button {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    height: 2.8em;
+    width: 10em;
+    padding: 0;
+    outline: none;
+    overflow: hidden;
+    color: #fff;
+    transition: color 0.3s 0.1s ease-out;
+    text-align: center;
+    line-height: 2.8em;
+    margin: 10px 0;
+}
+
+.button::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    content: '';
+    border-radius: 50%;
+    display: block;
+    width: 20em;
+    height: 20em;
+    left: -5em;
+    transition: box-shadow 0.5s ease-out;
+    z-index: -1;
+}
+
+.button:hover {
+    color: #fff;
+}
+
+.button:hover::before {
+    box-shadow: inset 0 0 0 10em gray;
+}
+
+#feature {
+    width: auto;
+    padding: 70px 0;
+    /* color: #fff; */
+    background: #fff;
+}
+
+.title-text {
+    text-align: center;
+    padding-bottom: 70px;
+}
+
+.title-text p {
+    margin: auto;
+    font-size: 30px;
+    color: #009688;
+    font-weight: bold ;
+}
+
+.title-text h1 {
+    margin: auto;
+    font-size: 40px;
+    color: #000;
+    font-weight: bold ;
+}
+
+.social-icons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 50px; /* Increase the gap to create more space between icons */
+}
+
+.social-icons a {
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.social-icons a i{
+    font-size: 3em ;  
+}
+
+.social-icons a:hover {
+    transform: scale(1.2); /* Enlarge the icon when hovered */
+}
+
+/*Login Form Styles */
+.form-containerLog {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background:rgba(0, 150, 136, 0.7); /*Semi-transparent background */
+    backdrop-filter: blur(6px); /* Apply blur effect */
+    padding: 40px;
+    width: 400px; /* Set width */
+    height: 400px; /* Set height */
+    border-radius: 10px;
+    z-index: 4;
+}
+
+.form-containerLog form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-containerLog label, .form-containerLog input, .form-containerLog button {
+    margin: 10px 0;
+}
+
+.form-containerLog input, .form-containerLog button {
+    padding: 10px;
+}
+
+.input-containerLog {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.input-containerLog label {
+    margin-right: 10px;
+}
+
+.input-containerLog input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.input-containerLog i {
+    color: #fff;
+}
+
+/*Register Form Styles */
+.form-containerReg {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background:rgba(0, 150, 136, 0.7); /*Semi-transparent background */
+    backdrop-filter: blur(6px); /* Apply blur effect */
+    padding: 40px;
+    width: 400px; /* Set width */
+    height: 400px; /* Set height */
+    border-radius: 10px;
+    z-index: 4;
+}
+
+.form-containerReg  form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-containerReg  label, .form-containerReg input, .form-containerReg  button {
+    margin: 10px 0;
+}
+
+.form-containerReg  input, .form-containerReg  button {
+    padding: 10px;
+}
+
+.input-containerReg {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.input-containerReg label {
+    margin-right: 10px;
+}
+
+.input-containerReg input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.input-containerReg i {
+    color: #fff;
+}
+
+/* For larger screens */
+@media screen and (min-width: 375px) {
+    #topnav {
+        padding: 1px 20px; /* Adjust padding for smaller screens */
+    }
+
+    #topnav img.logo {
+        width: 100px; /* Adjust logo size */
+    }
+
+    #sidenav {
+        width: 20%; /* Adjust sidebar width */
+        max-width: 300px; /* Limit maximum width */
+    }
+}
+
+/* For smaller screens */
+@media screen and (max-width: 1024px) {
+    #topnav {
+        padding: 1px 10px; /* Adjust padding for smaller screens */
+    }
+
+    #topnav img.logo {
+        width: 80px; /* Adjust logo size */
+    }
+
+    #sidenav {
+        width: 40%; /* Adjust sidebar width */
+        max-width: none; /* Remove maximum width limit */
+    }
+    .content {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: center;
+        color: #fff;
+    }
+    
+    .content h1 {
+        font-size:xx-large;
+        margin-top: 50%;
+    }
+    
+    .content p {
+        font-size:medium;
+        margin: 20px auto;
+        font-weight: 100;
+        line-height: 25px;
+    }
+    .LOGO {
+        width: 20%;
+        position: absolute;
+        top: 4%;
+        left: 10%;
+    }
+    #feature {
+        width: auto;
+        padding: 5% 0;
+        /* color: #fff; */
+        background: #fff;
+    }
+    
+    .title-text {
+        text-align: center;
+        padding-bottom: 10%;
+    }
+    
+    .title-text p {
+        margin: auto;
+        font-size: large;
+        color: #009688;
+        font-weight: bold ;
+    }
+    
+    .title-text h1 {
+        margin: auto;
+        font-size: x-large;
+        color: #000;
+        font-weight: bold ;
+    }
+    .social-icons {
+        margin-top: 1%;
+        display: flex;
+        justify-content: center;
+        gap: 5%; /* Increase the gap to create more space between icons */
+    }
+    
+    .social-icons a {
+        transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    }
+    .social-icons a i{
+     font-size: 175% ;  
+    }
+    
+    .social-icons a:hover {
+        transform: scale(1.2); /* Enlarge the icon when hovered */
+    }
+    /*Login Form Styles */
+    .form-containerLog {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 150, 136, 0.7); /* Semi-transparent background */
+        backdrop-filter: blur(6px); /* Apply blur effect */
+        padding: 40px;
+        width: 80%; /* Adjusted width */
+        max-width: 400px; /* Maximum width */
+        height: auto; /* Adjusted height */
+        border-radius: 10px;
+        z-index: 4;
+    }
+
+    .form-containerLog form {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center align form elements */
+    }
+
+    .form-containerLog label, .form-containerLog input, .form-containerLog button {
+        margin: 10px 0;
+    }
+
+    .form-containerLog input, .form-containerLog button {
+        padding: 10px;
+        width: 100%; /* Full width input and button */
+        box-sizing: border-box; /* Include padding and border in width */
+    }
+
+    .input-containerLog {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 5px;
+        margin-bottom: 10px;
+        width: 100%; /* Full width input container */
+    }
+
+    .input-containerLog label {
+        margin-right: 10px;
+    }
+
+    .input-containerLog input {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 8px;
+        border-radius: 5px;
+        width: calc(100% - 30px); /* Adjusted width */
+    }
+
+    .input-containerLog i {
+        color: #fff;
+    }
+
+    /* Register Form Styles */
+    .form-containerReg {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 150, 136, 0.7); /* Semi-transparent background */
+        backdrop-filter: blur(6px); /* Apply blur effect */
+        padding: 40px;
+        width: 80%; /* Adjusted width */
+        max-width: 400px; /* Maximum width */
+        height: auto; /* Adjusted height */
+        border-radius: 10px;
+        z-index: 4;
+    }
+
+    .form-containerReg form {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center align form elements */
+    }
+
+    .form-containerReg label, .form-containerReg input, .form-containerReg button {
+        margin: 10px 0;
+    }
+
+    .form-containerReg input, .form-containerReg button {
+        padding: 10px;
+        width: 100%; /* Full width input and button */
+        box-sizing: border-box; /* Include padding and border in width */
+    }
+
+    .input-containerReg {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 5px;
+        margin-bottom: 10px;
+        width: 100%; /* Full width input container */
+    }
+
+    .input-containerReg label {
+        margin-right: 10px;
+    }
+
+    .input-containerReg input {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 8px;
+        border-radius: 5px;
+        width: calc(100% - 30px); /* Adjusted width */
+    }
+
+    .input-containerReg i {
+        color: #fff;
+    }
+}
+
+
