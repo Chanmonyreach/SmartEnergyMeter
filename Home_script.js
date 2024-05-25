@@ -1,7 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('#topnav ul li a:not(#goBack)');
     const sections = document.querySelectorAll('.content-section');
+    const sidenavElement = document.getElementById('sidenav');
+    const accountBtnTopbar = document.getElementById('accountBtnTopbar');
     const topnav = document.getElementById('topnav');
+    const topnavContents = document.querySelectorAll('#topnav > *:not(.logo)');
+    const logo = document.querySelector('#topnav img.logo');
+    let sidebarOpened = false;
 
     function setActiveLink(link) {
         navLinks.forEach(navLink => navLink.classList.remove('active'));
@@ -16,6 +21,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 section.classList.remove('active');
             }
         });
+    }
+
+    function openSidebar() {
+        sidenavElement.style.right = "0px";
+        topnavContents.forEach(content => {
+            content.style.transform = "translateX(-250px)";
+        });
+        accountBtnTopbar.classList.add('hide-account-icon');
+        sidebarOpened = true;
     }
 
     navLinks.forEach(link => {
@@ -42,11 +56,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Redirect to main.html when clicking on the Login link
-    const loginLink = document.querySelector('#topnav ul li a[href="index.html"]');
-    loginLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.location.href = "index.html";
-    });
+    accountBtnTopbar.onclick = function() {
+        if (!sidebarOpened) {
+            openSidebar();
+        } else {
+            if (sidenavElement.style.right === "-250px") {
+                sidenavElement.style.right = "0px";
+                topnavContents.forEach(content => {
+                    content.style.transform = "translateX(-250px)";
+                });
+                accountBtnTopbar.classList.add('hide-account-icon');
+            } else {
+                sidenavElement.style.right = "-250px";
+                topnavContents.forEach(content => {
+                    content.style.transform = "translateX(0)";
+                });
+                accountBtnTopbar.classList.remove('hide-account-icon');
+            }
+        }
+    };
 
+    document.addEventListener('click', function(e) {
+        if (!sidenavElement.contains(e.target) && !accountBtnTopbar.contains(e.target)) {
+            if (!sidebarOpened) {
+                openSidebar();
+            } else {
+                sidenavElement.style.right = "-250px";
+                topnavContents.forEach(content => {
+                    content.style.transform = "translateX(0)";
+                });
+                accountBtnTopbar.classList.remove('hide-account-icon');
+            }
+        }
+    });
 });
