@@ -12,13 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (accountBtnTopbar) {
         accountBtnTopbar.onclick = function() {
             if (sidenavElement.style.right === "-40%") {
-                sidenavElement.style.right = "0";
-                topnav.style.right = "44%";
-                accountBtnTopbar.style.display = "none";
+                openSidebar();
             } else {
-                sidenavElement.style.right = "-40%";
-                topnav.style.right = "4%";
-                accountBtnTopbar.style.display = "block";
+                closeSidebar();
             }
         };
     }
@@ -26,36 +22,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close the sidebar when clicking outside of it
     document.addEventListener('click', function(e) {
         if (!sidenavElement.contains(e.target) && !accountBtnTopbar.contains(e.target)) {
-            sidenavElement.style.right = "-40%";
-            topnav.style.right = "30px";
-            accountBtnTopbar.style.display = "block";
+            closeSidebar();
         }
     });
 
     // Function to toggle the display of the login form
     if (document.getElementById('loginBtn')) {
         document.getElementById('loginBtn').onclick = function() {
-            if (loginForm.style.display !== 'block') {
-                loginForm.style.display = 'block';
-                registerForm.style.display = 'none';
-                accountBtnTopbar.style.display = "block"; // Ensure the menu icon is visible
-            } else if (registerForm.style.display === 'block') {
-                registerForm.style.display = 'none';
-            }
+            openLoginForm();
         }
     }
 
     // Function to toggle the display of the register form
     if (document.getElementById('sidenavRegisterBtn')) {
         document.getElementById('sidenavRegisterBtn').onclick = function() {
-            if (sidenavElement.style.right === "0px" && registerForm.style.display !== 'block') {
-                registerForm.style.display = 'block';
-                loginForm.style.display = 'none';
-                sidenavElement.style.right = "-250px";
-                accountBtnTopbar.style.display = "block"; // Ensure the menu icon is visible
-            } else if (loginForm.style.display === 'block') {
-                loginForm.style.display = 'none';
-            }
+            openRegisterForm();
         }
     }
 
@@ -82,4 +63,28 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
+    function openSidebar() {
+        sidenavElement.style.right = "0";
+        topnav.style.right = "44%";
+        accountBtnTopbar.style.display = "none";
+    }
+
+    function closeSidebar() {
+        sidenavElement.style.right = "-40%";
+        topnav.style.right = "4%";
+        accountBtnTopbar.style.display = "block";
+    }
+
+    function openLoginForm() {
+        loginForm.style.display = 'block';
+        registerForm.style.display = 'none';
+        closeSidebar();
+    }
+
+    function openRegisterForm() {
+        registerForm.style.display = 'block';
+        loginForm.style.display = 'none';
+        closeSidebar();
+    }
 });
