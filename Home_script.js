@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const topnav = document.getElementById('topnav');
     const topnavContents = document.querySelectorAll('#topnav > *:not(.logo)');
     const logo = document.querySelector('#topnav img.logo');
+    
     let sidebarOpened = false;
 
     function setActiveLink(link) {
@@ -32,6 +33,20 @@ document.addEventListener('DOMContentLoaded', function() {
         sidebarOpened = true;
     }
 
+    // Function to toggle sidebar state
+    function toggleSidebar() {
+        if (!sidebarOpened) {
+            openSidebar();
+        } else {
+            sidenavElement.style.right = "-250px";
+            topnavContents.forEach(content => {
+                content.style.transform = "translateX(0)";
+            });
+            accountBtnTopbar.classList.remove('hide-account-icon');
+            sidebarOpened = false;
+        }
+    }
+
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -52,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 500);
 
                 setActiveLink(link);
+                toggleSidebar(); // Close sidebar after clicking a navigation link
             }
         });
     });
@@ -60,32 +76,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!sidebarOpened) {
             openSidebar();
         } else {
-            if (sidenavElement.style.right === "-250px") {
-                sidenavElement.style.right = "0px";
-                topnavContents.forEach(content => {
-                    content.style.transform = "translateX(-250px)";
-                });
-                accountBtnTopbar.classList.add('hide-account-icon');
-            } else {
-                sidenavElement.style.right = "-250px";
-                topnavContents.forEach(content => {
-                    content.style.transform = "translateX(0)";
-                });
-                accountBtnTopbar.classList.remove('hide-account-icon');
-            }
+            toggleSidebar();
         }
     };
 
     document.addEventListener('click', function(e) {
         if (!sidenavElement.contains(e.target) && !accountBtnTopbar.contains(e.target)) {
-            if (!sidebarOpened) {
-                openSidebar();
-            } else {
-                sidenavElement.style.right = "-250px";
-                topnavContents.forEach(content => {
-                    content.style.transform = "translateX(0)";
-                });
-                accountBtnTopbar.classList.remove('hide-account-icon');
+            if (sidebarOpened) {
+                toggleSidebar();
             }
         }
     });
