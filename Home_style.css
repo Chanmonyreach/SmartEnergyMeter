@@ -21,61 +21,53 @@ html, body {
     background-position: center;
 }
 
-.LOGO {
-    width: 140px;
-    position: absolute;
-    top: 4%;
-    left: 10%;
-    z-index: 4;
-}
-
 #topnav {
-    position: fixed;
-    right: 30px;
-    top: 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: rgba(0, 150, 136, 0.7);
+    backdrop-filter: blur(5px);
+    padding: 1px 30px;
     z-index: 3;
-    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-#topnav.moved {
-    transform: translateX(-300px); /* Adjust this value if the sidebar width changes */
+#topnav img.logo {
+    width: 140px;
 }
 
 #topnav ul {
-    display: flex;
     list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
 }
 
 #topnav ul li {
-    margin: 20px;
-    display: inline-block;
-    position: relative;
+    margin-right: 20px;
+}
+
+#topnav ul li:last-child {
+    margin-right: 0;
 }
 
 #topnav ul li a {
     text-decoration: none;
     color: #fff;
-    text-transform: uppercase;
-    position: relative;
-}
-
-#topnav ul li a::after {
-    content: '';
-    height: 3px;
-    width: 0;
-    background: #c7c7c7;
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    transition: width 0.5s;
-}
-
-#topnav ul li:hover a::after {
-    width: 100%;
+    font-size: 16px;
 }
 
 #topnav ul li a.active::after {
+    content: '';
+    display: block;
     width: 100%;
+    height: 3px;
+    background-color: #fff;
+    margin-top: 3px;
 }
 
 .content-wrapper {
@@ -123,10 +115,59 @@ html, body {
 
 h2 {
     font-size: 2em;
-    color: #333;
+    color: #fff;
 }
 
 p {
     font-size: 1em;
-    color: #666;
+    color: #ccc;
+}
+
+#sidenav {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    right: -300px;
+    top: 0;
+    background: rgba(0, 150, 136, 0.7);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease;
+    padding: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidenav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+#sidenav ul li {
+    margin: 15px 0;
+}
+
+#sidenav ul li a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+#sidenav ul li a:hover {
+    color: #333;
+    background-color: #c7c7c7;
+}
+
+#accountBtnTopbar i {
+    font-size: 1.75em;
+}
+
+.hide-account-icon {
+    display: none;
 }
