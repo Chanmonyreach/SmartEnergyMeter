@@ -263,7 +263,7 @@ html, body {
     padding: 10px;
 }
 
-.input-container {
+.input-containerLog {
     display: flex;
     align-items: center;
     border: 1px solid #ccc;
@@ -272,11 +272,11 @@ html, body {
     margin-bottom: 10px;
 }
 
-.input-container label {
+.input-containerLog label {
     margin-right: 10px;
 }
 
-.input-container input {
+.input-containerLog input {
     flex: 1;
     border: none;
     outline: none;
@@ -284,7 +284,7 @@ html, body {
     border-radius: 5px;
 }
 
-.input-container i {
+.input-containerLog i {
     color: #fff;
 }
 
@@ -317,7 +317,7 @@ html, body {
     padding: 10px;
 }
 
-.input-container {
+.input-containerReg {
     display: flex;
     align-items: center;
     border: 1px solid #ccc;
@@ -326,11 +326,11 @@ html, body {
     margin-bottom: 10px;
 }
 
-.input-container label {
+.input-containerReg label {
     margin-right: 10px;
 }
 
-.input-container input {
+.input-containerReg input {
     flex: 1;
     border: none;
     outline: none;
@@ -338,12 +338,12 @@ html, body {
     border-radius: 5px;
 }
 
-.input-container i {
+.input-containerReg i {
     color: #fff;
 }
 
 /* For larger screens */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 375px) {
     #topnav {
         padding: 1px 20px; /* Adjust padding for smaller screens */
     }
@@ -359,7 +359,7 @@ html, body {
 }
 
 /* For smaller screens */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 1024px) {
     #topnav {
         padding: 1px 10px; /* Adjust padding for smaller screens */
     }
@@ -441,18 +441,19 @@ html, body {
     .social-icons a:hover {
         transform: scale(1.2); /* Enlarge the icon when hovered */
     }
-    /* Login Form Styles */
+    /*Login Form Styles */
     .form-containerLog {
         display: none; /* Initially hidden */
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background:rgba(0, 150, 136, 0.7); /*Semi-transparent background */
+        background: rgba(0, 150, 136, 0.7); /* Semi-transparent background */
         backdrop-filter: blur(6px); /* Apply blur effect */
         padding: 40px;
-        width: 75%; /* Set width */
-        height: 40%; /* Set height */
+        width: 80%; /* Adjusted width */
+        max-width: 400px; /* Maximum width */
+        height: auto; /* Adjusted height */
         border-radius: 10px;
         z-index: 4;
     }
@@ -460,6 +461,7 @@ html, body {
     .form-containerLog form {
         display: flex;
         flex-direction: column;
+        align-items: center; /* Center align form elements */
     }
 
     .form-containerLog label, .form-containerLog input, .form-containerLog button {
@@ -468,84 +470,94 @@ html, body {
 
     .form-containerLog input, .form-containerLog button {
         padding: 10px;
+        width: 100%; /* Full width input and button */
+        box-sizing: border-box; /* Include padding and border in width */
     }
 
-    .input-container {
+    .input-containerLog {
         display: flex;
         align-items: center;
         border: 1px solid #ccc;
         border-radius: 5px;
         padding: 5px;
         margin-bottom: 10px;
+        width: 100%; /* Full width input container */
     }
 
-    .input-container label {
+    .input-containerLog label {
         margin-right: 10px;
     }
 
-    .input-container input {
+    .input-containerLog input {
         flex: 1;
         border: none;
         outline: none;
         padding: 8px;
         border-radius: 5px;
+        width: calc(100% - 30px); /* Adjusted width */
     }
 
-    .input-container i {
+    .input-containerLog i {
         color: #fff;
     }
 
-    /*Register Form Styles */
+    /* Register Form Styles */
     .form-containerReg {
         display: none; /* Initially hidden */
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background:rgba(0, 150, 136, 0.7); /*Semi-transparent background */
+        background: rgba(0, 150, 136, 0.7); /* Semi-transparent background */
         backdrop-filter: blur(6px); /* Apply blur effect */
         padding: 40px;
-        width: 75%; /* Set width */
-        height: 45%; /* Set height */
+        width: 80%; /* Adjusted width */
+        max-width: 400px; /* Maximum width */
+        height: auto; /* Adjusted height */
         border-radius: 10px;
         z-index: 4;
     }
 
-    .form-containerReg  form {
+    .form-containerReg form {
         display: flex;
         flex-direction: column;
+        align-items: center; /* Center align form elements */
     }
 
-    .form-containerReg  label, .form-containerReg input, .form-containerReg button {
+    .form-containerReg label, .form-containerReg input, .form-containerReg button {
         margin: 10px 0;
     }
 
-    .form-containerReg  input, .form-containerReg button {
+    .form-containerReg input, .form-containerReg button {
         padding: 10px;
+        width: 100%; /* Full width input and button */
+        box-sizing: border-box; /* Include padding and border in width */
     }
 
-    .input-container {
+    .input-containerReg {
         display: flex;
         align-items: center;
         border: 1px solid #ccc;
         border-radius: 5px;
         padding: 5px;
         margin-bottom: 10px;
+        width: 100%; /* Full width input container */
     }
 
-    .input-container label {
+    .input-containerReg label {
         margin-right: 10px;
     }
 
-    .input-container input {
+    .input-containerReg input {
         flex: 1;
         border: none;
         outline: none;
         padding: 8px;
         border-radius: 5px;
+        width: calc(100% - 30px); /* Adjusted width */
     }
 
-    .input-container i {
+    .input-containerReg i {
         color: #fff;
     }
 }
