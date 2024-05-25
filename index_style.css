@@ -32,7 +32,7 @@ html, body {
 }
 
 .LOGO {
-    width: 140px;
+    width: 100px;
     position: absolute;
     top: 4%;
     left: 10%;
@@ -57,7 +57,7 @@ html, body {
 }
 
 #topnav ul li {
-    margin: 20px;
+    margin: 2%;
     display: inline-block;
     position: relative;
 }
@@ -190,7 +190,7 @@ html, body {
 }
 
 #feature {
-    width: 100%;
+    width: auto;
     padding: 70px 0;
     /* color: #fff; */
     background: #fff;
@@ -219,19 +219,23 @@ html, body {
     margin-top: 20px;
     display: flex;
     justify-content: center;
-    gap: 30px; /* Increase the gap to create more space between icons */
+    gap: 50px; /* Increase the gap to create more space between icons */
 }
 
 .social-icons a {
     transition: transform 0.3s ease; /* Smooth transition for hover effect */
 }
 
+.social-icons a i{
+    font-size: 3em ;  
+}
+
 .social-icons a:hover {
     transform: scale(1.2); /* Enlarge the icon when hovered */
 }
 
-/* Form Styles */
-.form-container {
+/*Login Form Styles */
+.form-containerLog {
     display: none; /* Initially hidden */
     position: fixed;
     top: 50%;
@@ -246,16 +250,16 @@ html, body {
     z-index: 4;
 }
 
-.form-container form {
+.form-containerLog form {
     display: flex;
     flex-direction: column;
 }
 
-.form-container label, .form-container input, .form-container button {
+.form-containerLog label, .form-containerLog input, .form-containerLog button {
     margin: 10px 0;
 }
 
-.form-container input, .form-container button {
+.form-containerLog input, .form-containerLog button {
     padding: 10px;
 }
 
@@ -284,5 +288,266 @@ html, body {
     color: #fff;
 }
 
+/*Register Form Styles */
+.form-containerReg {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background:rgba(0, 150, 136, 0.7); /*Semi-transparent background */
+    backdrop-filter: blur(6px); /* Apply blur effect */
+    padding: 40px;
+    width: 400px; /* Set width */
+    height: 400px; /* Set height */
+    border-radius: 10px;
+    z-index: 4;
+}
+
+.form-containerReg  form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-containerReg  label, .form-containerReg input, .form-containerReg  button {
+    margin: 10px 0;
+}
+
+.form-containerReg  input, .form-containerReg  button {
+    padding: 10px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.input-container label {
+    margin-right: 10px;
+}
+
+.input-container input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.input-container i {
+    color: #fff;
+}
+
+/* For larger screens */
+@media screen and (min-width: 768px) {
+    #topnav {
+        padding: 1px 20px; /* Adjust padding for smaller screens */
+    }
+
+    #topnav img.logo {
+        width: 100px; /* Adjust logo size */
+    }
+
+    #sidenav {
+        width: 20%; /* Adjust sidebar width */
+        max-width: 300px; /* Limit maximum width */
+    }
+}
+
+/* For smaller screens */
+@media screen and (max-width: 480px) {
+    #topnav {
+        padding: 1px 10px; /* Adjust padding for smaller screens */
+    }
+
+    #topnav img.logo {
+        width: 80px; /* Adjust logo size */
+    }
+
+    #sidenav {
+        width: 40%; /* Adjust sidebar width */
+        max-width: none; /* Remove maximum width limit */
+    }
+    .content {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: center;
+        color: #fff;
+    }
+    
+    .content h1 {
+        font-size:xx-large;
+        margin-top: 50%;
+    }
+    
+    .content p {
+        font-size:medium;
+        margin: 20px auto;
+        font-weight: 100;
+        line-height: 25px;
+    }
+    .LOGO {
+        width: 20%;
+        position: absolute;
+        top: 4%;
+        left: 10%;
+    }
+    #feature {
+        width: auto;
+        padding: 5% 0;
+        /* color: #fff; */
+        background: #fff;
+    }
+    
+    .title-text {
+        text-align: center;
+        padding-bottom: 10%;
+    }
+    
+    .title-text p {
+        margin: auto;
+        font-size: large;
+        color: #009688;
+        font-weight: bold ;
+    }
+    
+    .title-text h1 {
+        margin: auto;
+        font-size: x-large;
+        color: #000;
+        font-weight: bold ;
+    }
+    .social-icons {
+        margin-top: 1%;
+        display: flex;
+        justify-content: center;
+        gap: 5%; /* Increase the gap to create more space between icons */
+    }
+    
+    .social-icons a {
+        transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    }
+    .social-icons a i{
+     font-size: 175% ;  
+    }
+    
+    .social-icons a:hover {
+        transform: scale(1.2); /* Enlarge the icon when hovered */
+    }
+    /* Login Form Styles */
+    .form-containerLog {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background:rgba(0, 150, 136, 0.7); /*Semi-transparent background */
+        backdrop-filter: blur(6px); /* Apply blur effect */
+        padding: 40px;
+        width: 75%; /* Set width */
+        height: 40%; /* Set height */
+        border-radius: 10px;
+        z-index: 4;
+    }
+
+    .form-containerLog form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-containerLog label, .form-containerLog input, .form-containerLog button {
+        margin: 10px 0;
+    }
+
+    .form-containerLog input, .form-containerLog button {
+        padding: 10px;
+    }
+
+    .input-container {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+    .input-container label {
+        margin-right: 10px;
+    }
+
+    .input-container input {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 8px;
+        border-radius: 5px;
+    }
+
+    .input-container i {
+        color: #fff;
+    }
+
+    /*Register Form Styles */
+    .form-containerReg {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background:rgba(0, 150, 136, 0.7); /*Semi-transparent background */
+        backdrop-filter: blur(6px); /* Apply blur effect */
+        padding: 40px;
+        width: 75%; /* Set width */
+        height: 45%; /* Set height */
+        border-radius: 10px;
+        z-index: 4;
+    }
+
+    .form-containerReg  form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-containerReg  label, .form-containerReg input, .form-containerReg button {
+        margin: 10px 0;
+    }
+
+    .form-containerReg  input, .form-containerReg button {
+        padding: 10px;
+    }
+
+    .input-container {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+    .input-container label {
+        margin-right: 10px;
+    }
+
+    .input-container input {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 8px;
+        border-radius: 5px;
+    }
+
+    .input-container i {
+        color: #fff;
+    }
+}
 
 
