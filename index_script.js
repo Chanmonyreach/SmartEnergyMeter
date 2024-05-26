@@ -10,13 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Event listener for sidebar toggle button
     if (accountBtnTopbar) {
-        accountBtnTopbar.onclick = function() {
-            if (sidenavElement.style.right === "-40%") {
-                openSidebar();
-            } else {
-                closeSidebar();
-            }
-        };
+        accountBtnTopbar.onclick = toggleSidebar;
     }
 
     // Close the sidebar when clicking outside of it
@@ -25,6 +19,14 @@ document.addEventListener('DOMContentLoaded', function() {
             closeSidebar();
         }
     });
+
+    // Function to toggle the sidebar
+    function toggleSidebar() {
+        const isOpen = sidenavElement.style.right === '0px';
+        sidenavElement.style.right = isOpen ? '-40%' : '0px';
+        topnav.style.right = isOpen ? '4%' : '44%';
+        accountBtnTopbar.style.display = isOpen ? 'block' : 'none';
+    }
 
     // Function to toggle the display of the login form
     if (document.getElementById('loginBtn')) {
@@ -65,12 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-
-    function openSidebar() {
-        sidenavElement.style.right = "0";
-        topnav.style.right = "44%";
-        accountBtnTopbar.style.display = "none";
-    }
 
     function closeSidebar() {
         sidenavElement.style.right = "-40%";
