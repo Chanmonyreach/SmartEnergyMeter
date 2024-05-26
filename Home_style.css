@@ -11,135 +11,69 @@ html, body {
     background: #222;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
 }
 
 #banner {
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('Image/Background.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0, 0, 0, 0.25)), url('Image/Background.jpg');
     background-size: cover;
     background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
-#topnav {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 130px;
-    background: rgba(0, 150, 136, 0.7);
-    backdrop-filter: blur(5px);
-    padding: 1px 50px;
-    z-index: 3;
+.navbar {
+    width: 85%;
+    margin: auto;
+    padding: 35px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-#topnav img.logo {
-    width: 130px;
+.LOGO {
+    width: 100px;
+    position: absolute;
+    top: 4%;
+    left: 10%;
+}
+
+#topnav {
+    position: fixed;
+    right: 30px;
+    top: 20px;
+    z-index: 3;
+    transition: transform 0.3s ease;
+}
+
+#topnav.moved {
+    transform: translateX(-300px); /* Adjust this value if the sidebar width changes */
 }
 
 #topnav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
+    list-style: none;
 }
 
 #topnav ul li {
-    margin-right: 20px;
-    padding-top: 80px;
-}
-
-#topnav ul li:last-child {
-    margin-right: 0;
+    margin: 2%;
+    display: inline-block;
+    position: relative;
 }
 
 #topnav ul li a {
     text-decoration: none;
     color: #fff;
-    font-size: 16px;
-    position: relative; /* Add position relative to create a positioning context */
-}
-
-#topnav ul li a::after {
-    content: '';
-    position: absolute;
-    bottom: -3px; /* Adjust this value to change the distance from the letter */
-    left: 0;
-    width: 0; /* Initially, the line is invisible */
-    height: 2px; /* Height of the line */
-    background-color: #fff; /* Color of the line */
-    transition: width 0.3s ease; /* Transition effect for width change */
-}
-#topnav ul li a.active::after {
-    width: 100%; /* Expand the width of the line for the active link */
-}
-
-#topnav ul li a.active {
-    color: #c7c7c7; /* Change the color of the active link */
-}
-
-#topnav ul li a:hover::after {
-    width: 100%; /* When hovering, expand the width of the line to cover the letter */
-}
-
-#topnav ul li ai {
-    margin-right: 10px;
-}
-
-.content-wrapper {
+    text-transform: uppercase;
     position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.content-section {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    opacity: 0;
-    transition: left 0.2s, opacity 0.2s;
-    backdrop-filter: blur(10px);
-}
-
-.content-section.active {
-    left: 0;
-    opacity: 1;
-}
-
-.content-section.left-in {
-    left: -100%;
-    opacity: 0;
-}
-
-.content-section.right-in {
-    left: 100%;
-    opacity: 0;
-}
-
-.content-section.left-out {
-    left: -100%;
-    opacity: 0;
-}
-
-.content-section.right-out {
-    left: 100%;
-    opacity: 0;
-}
-
-h2 {
-    font-size: 2em;
-    color: #fff;
-}
-
-p {
-    font-size: 1em;
-    color: #ccc;
 }
 
 #sidenav {
@@ -166,6 +100,7 @@ p {
 
 #sidenav ul li {
     margin: 15px 0;
+    position: relative;
 }
 
 #sidenav ul li a {
@@ -183,10 +118,477 @@ p {
     background-color: #c7c7c7;
 }
 
-#accountBtnTopbar i {
-    font-size: 1.75em;
+#sidenav ul li ai {
+    margin-right: 10px;
 }
 
-.hide-account-icon {
-    display: none;
+#menuBtn {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Increase the gap to create more space between icons */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+#menuBtn :hover {
+    transform: scale(1.2); /* Enlarge the icon when hovered */
+}
+
+.content {
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.content h1 {
+    font-size: 70px;
+    margin-top: 80px;
+}
+
+.content p {
+    margin: 20px auto;
+    font-weight: 100;
+    line-height: 25px;
+}
+
+.button {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    height: 2.8em;
+    width: 10em;
+    padding: 0;
+    outline: none;
+    overflow: hidden;
+    color: #fff;
+    transition: color 0.3s 0.1s ease-out;
+    text-align: center;
+    line-height: 2.8em;
+    margin: 10px 0;
+}
+
+.button::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    content: '';
+    border-radius: 50%;
+    display: block;
+    width: 20em;
+    height: 20em;
+    left: -5em;
+    transition: box-shadow 0.5s ease-out;
+    z-index: -1;
+}
+
+.button:hover {
+    color: #fff;
+}
+
+.button:hover::before {
+    box-shadow: inset 0 0 0 10em gray;
+}
+
+#feature {
+    width: auto;
+    padding: 70px 0;
+    background: #fff;
+}
+
+.title-text {
+    text-align: center;
+    padding-bottom: 70px;
+}
+
+.title-text p {
+    margin: auto;
+    font-size: 30px;
+    color: #009688;
+    font-weight: bold ;
+}
+
+.title-text h1 {
+    margin: auto;
+    font-size: 40px;
+    color: #000;
+    font-weight: bold ;
+}
+
+.social-icons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 50px; /* Increase the gap to create more space between icons */
+}
+
+.social-icons a {
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.social-icons a i {
+    font-size: 3em;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2); /* Enlarge the icon when hovered */
+}
+
+/*Login Form Styles */
+.form-containerLog {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 150, 136, 0.7); /* Semi-transparent background */
+    backdrop-filter: blur(6px); /* Apply blur effect */
+    padding: 40px;
+    width: 400px; /* Set width */
+    height: 400px; /* Set height */
+    border-radius: 10px;
+    z-index: 4;
+}
+
+.form-containerLog form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-containerLog label, .form-containerLog input, .form-containerLog button {
+    margin: 10px 0;
+}
+
+.form-containerLog input, .form-containerLog button {
+    padding: 10px;
+}
+
+.input-containerLog {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.input-containerLog label {
+    margin-right: 10px;
+}
+
+.input-containerLog input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.input-containerLog i {
+    color: #fff;
+}
+
+/*Register Form Styles */
+.form-containerReg {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 150, 136, 0.7); /* Semi-transparent background */
+    backdrop-filter: blur(6px); /* Apply blur effect */
+    padding: 40px;
+    width: 400px; /* Set width */
+    height: 400px; /* Set height */
+    border-radius: 10px;
+    z-index: 4;
+}
+
+.form-containerReg form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-containerReg label, .form-containerReg input, .form-containerReg button {
+    margin: 10px 0;
+}
+
+.form-containerReg input, .form-containerReg button {
+    padding: 10px;
+}
+
+.input-containerReg {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.input-containerReg label {
+    margin-right: 10px;
+}
+
+.input-containerReg input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.input-containerReg i {
+    color: #fff;
+}
+
+/* Media Queries */
+
+/* For smaller screens */
+@media screen and (max-width: 1024px) {
+    #topnav {
+        padding: 1px 10px; /* Adjust padding for smaller screens */
+    }
+
+    #topnav img.logo {
+        width: 80px; /* Adjust logo size */
+    }
+
+    #sidenav {
+        width: 30%; /* Adjust sidebar width */
+        max-width: 200px; /* Limit maximum width */
+    }
+
+    .content h1 {
+        font-size: xx-large;
+        margin-top: 50%;
+    }
+
+    .content p {
+        font-size: medium;
+        margin: 20px auto;
+        font-weight: 100;
+        line-height: 25px;
+    }
+
+    .LOGO {
+        width: 20%;
+        position: absolute;
+        top: 4%;
+        left: 10%;
+    }
+
+    #feature {
+        width: auto;
+        padding: 5% 0;
+        background: #fff;
+    }
+
+    .title-text {
+        text-align: center;
+        padding-bottom: 10%;
+    }
+
+    .title-text p {
+        margin: auto;
+        font-size: large;
+        color: #009688;
+        font-weight: bold ;
+    }
+
+    .title-text h1 {
+        margin: auto;
+        font-size: x-large;
+        color: #000;
+        font-weight: bold ;
+    }
+
+    .social-icons {
+        margin-top: 1%;
+        display: flex;
+        justify-content: center;
+        gap: 5%; /* Increase the gap to create more space between icons */
+    }
+
+    .social-icons a {
+        transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    }
+
+    .social-icons a i {
+        font-size: 175%;
+    }
+
+    .social-icons a:hover {
+        transform: scale(1.2); /* Enlarge the icon when hovered */
+    }
+
+    /* Login Form Styles */
+    .form-containerLog {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 150, 136, 0.7); /* Semi-transparent background */
+        backdrop-filter: blur(6px); /* Apply blur effect */
+        padding: 40px;
+        width: 80%; /* Adjusted width */
+        max-width: 400px; /* Maximum width */
+        height: auto; /* Adjusted height */
+        border-radius: 10px;
+        z-index: 4;
+    }
+
+    .form-containerLog form {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center align form elements */
+    }
+
+    .form-containerLog label, .form-containerLog input, .form-containerLog button {
+        margin: 10px 0;
+    }
+
+    .form-containerLog input, .form-containerLog button {
+        padding: 10px;
+        width: 100%; /* Full width input and button */
+        box-sizing: border-box; /* Include padding and border in width */
+    }
+
+    .input-containerLog {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 5px;
+        margin-bottom: 10px;
+        width: 100%; /* Full width input container */
+    }
+
+    .input-containerLog label {
+        margin-right: 10px;
+    }
+
+    .input-containerLog input {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 8px;
+        border-radius: 5px;
+        width: calc(100% - 30px); /* Adjusted width */
+    }
+
+    .input-containerLog i {
+        color: #fff;
+    }
+
+    /* Register Form Styles */
+    .form-containerReg {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 150, 136, 0.7); /* Semi-transparent background */
+        backdrop-filter: blur(6px); /* Apply blur effect */
+        padding: 40px;
+        width: 80%; /* Adjusted width */
+        max-width: 400px; /* Maximum width */
+        height: auto; /* Adjusted height */
+        border-radius: 10px;
+        z-index: 4;
+    }
+
+    .form-containerReg form {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center align form elements */
+    }
+
+    .form-containerReg label, .form-containerReg input, .form-containerReg button {
+        margin: 10px 0;
+    }
+
+    .form-containerReg input, .form-containerReg button {
+        padding: 10px;
+        width: 100%; /* Full width input and button */
+        box-sizing: border-box; /* Include padding and border in width */
+    }
+
+    .input-containerReg {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 5px;
+        margin-bottom: 10px;
+        width: 100%; /* Full width input container */
+    }
+
+    .input-containerReg label {
+        margin-right: 10px;
+    }
+
+    .input-containerReg input {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 8px;
+        border-radius: 5px;
+        width: calc(100% - 30px); /* Adjusted width */
+    }
+
+    .input-containerReg i {
+        color: #fff;
+    }
+}
+
+/* For larger screens */
+@media screen and (min-width: 375px) {
+    #topnav {
+        padding: 1px 20px; /* Adjust padding for larger screens */
+    }
+
+    #topnav img.logo {
+        width: 100px; /* Adjust logo size */
+    }
+
+    #sidenav {
+        width: 20%; /* Adjust sidebar width */
+        max-width: 300px; /* Limit maximum width */
+    }
+}
+
+/* Orientation-specific adjustments */
+
+/* Portrait mode */
+@media screen and (orientation: portrait) {
+    .content {
+        padding: 20px;
+    }
+
+    .form-containerLog, .form-containerReg {
+        width: 90%;
+        max-width: 400px;
+    }
+}
+
+/* Landscape mode */
+@media screen and (orientation: landscape) {
+    .content {
+        padding: 10px;
+    }
+
+    .form-containerLog, .form-containerReg {
+        width: 70%;
+        max-width: 500px;
+    }
 }
