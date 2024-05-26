@@ -15,11 +15,15 @@ html, body {
 }
 
 #banner {
-    width: auto;
+    width: 100%;
     height: 100vh;
     background-image: linear-gradient(rgba(0,0,0,0.25), rgba(0, 0, 0, 0.25)), url('Image/Background.jpg');
     background-size: cover;
     background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 .navbar {
@@ -29,6 +33,10 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .LOGO {
@@ -38,7 +46,6 @@ html, body {
     left: 10%;
 }
 
-/* Your existing CSS styles for login.html */
 #topnav {
     position: fixed;
     right: 30px;
@@ -122,16 +129,18 @@ html, body {
     gap: 30px; /* Increase the gap to create more space between icons */
     transition: transform 0.3s ease; /* Smooth transition for hover effect */
 }
+
 #menuBtn :hover {
     transform: scale(1.2); /* Enlarge the icon when hovered */
 }
+
 .content {
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     text-align: center;
     color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .content h1 {
@@ -192,7 +201,6 @@ html, body {
 #feature {
     width: auto;
     padding: 70px 0;
-    /* color: #fff; */
     background: #fff;
 }
 
@@ -226,8 +234,8 @@ html, body {
     transition: transform 0.3s ease; /* Smooth transition for hover effect */
 }
 
-.social-icons a i{
-    font-size: 3em ;  
+.social-icons a i {
+    font-size: 3em;
 }
 
 .social-icons a:hover {
@@ -241,7 +249,7 @@ html, body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background:rgba(0, 150, 136, 0.7); /*Semi-transparent background */
+    background: rgba(0, 150, 136, 0.7); /* Semi-transparent background */
     backdrop-filter: blur(6px); /* Apply blur effect */
     padding: 40px;
     width: 400px; /* Set width */
@@ -295,7 +303,7 @@ html, body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background:rgba(0, 150, 136, 0.7); /*Semi-transparent background */
+    background: rgba(0, 150, 136, 0.7); /* Semi-transparent background */
     backdrop-filter: blur(6px); /* Apply blur effect */
     padding: 40px;
     width: 400px; /* Set width */
@@ -304,16 +312,16 @@ html, body {
     z-index: 4;
 }
 
-.form-containerReg  form {
+.form-containerReg form {
     display: flex;
     flex-direction: column;
 }
 
-.form-containerReg  label, .form-containerReg input, .form-containerReg  button {
+.form-containerReg label, .form-containerReg input, .form-containerReg button {
     margin: 10px 0;
 }
 
-.form-containerReg  input, .form-containerReg  button {
+.form-containerReg input, .form-containerReg button {
     padding: 10px;
 }
 
@@ -342,21 +350,7 @@ html, body {
     color: #fff;
 }
 
-/* For larger screens */
-@media screen and (min-width: 375px) {
-    #topnav {
-        padding: 1px 20px; /* Adjust padding for smaller screens */
-    }
-
-    #topnav img.logo {
-        width: 100px; /* Adjust logo size */
-    }
-
-    #sidenav {
-        width: 20%; /* Adjust sidebar width */
-        max-width: 300px; /* Limit maximum width */
-    }
-}
+/* Media Queries */
 
 /* For smaller screens */
 @media screen and (max-width: 1024px) {
@@ -369,79 +363,74 @@ html, body {
     }
 
     #sidenav {
-        width: 40%; /* Adjust sidebar width */
-        max-width: none; /* Remove maximum width limit */
+        width: 30%; /* Adjust sidebar width */
+        max-width: 200px; /* Limit maximum width */
     }
-    .content {
-        width: 100%;
-        height: auto;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        text-align: center;
-        color: #fff;
-    }
-    
+
     .content h1 {
-        font-size:xx-large;
+        font-size: xx-large;
         margin-top: 50%;
     }
-    
+
     .content p {
-        font-size:medium;
+        font-size: medium;
         margin: 20px auto;
         font-weight: 100;
         line-height: 25px;
     }
+
     .LOGO {
         width: 20%;
         position: absolute;
         top: 4%;
         left: 10%;
     }
+
     #feature {
         width: auto;
         padding: 5% 0;
-        /* color: #fff; */
         background: #fff;
     }
-    
+
     .title-text {
         text-align: center;
         padding-bottom: 10%;
     }
-    
+
     .title-text p {
         margin: auto;
         font-size: large;
         color: #009688;
         font-weight: bold ;
     }
-    
+
     .title-text h1 {
         margin: auto;
         font-size: x-large;
         color: #000;
         font-weight: bold ;
     }
+
     .social-icons {
         margin-top: 1%;
         display: flex;
         justify-content: center;
         gap: 5%; /* Increase the gap to create more space between icons */
     }
-    
+
     .social-icons a {
         transition: transform 0.3s ease; /* Smooth transition for hover effect */
     }
-    .social-icons a i{
-     font-size: 175% ;  
+
+    .social-icons a i {
+        font-size: 175%;
     }
-    
+
     .social-icons a:hover {
         transform: scale(1.2); /* Enlarge the icon when hovered */
     }
-    /*Login Form Styles */
+
+    /* Login Form Styles */
     .form-containerLog {
         display: none; /* Initially hidden */
         position: fixed;
@@ -562,4 +551,44 @@ html, body {
     }
 }
 
+/* For larger screens */
+@media screen and (min-width: 375px) {
+    #topnav {
+        padding: 1px 20px; /* Adjust padding for larger screens */
+    }
 
+    #topnav img.logo {
+        width: 100px; /* Adjust logo size */
+    }
+
+    #sidenav {
+        width: 20%; /* Adjust sidebar width */
+        max-width: 300px; /* Limit maximum width */
+    }
+}
+
+/* Orientation-specific adjustments */
+
+/* Portrait mode */
+@media screen and (orientation: portrait) {
+    .content {
+        padding: 20px;
+    }
+
+    .form-containerLog, .form-containerReg {
+        width: 90%;
+        max-width: 400px;
+    }
+}
+
+/* Landscape mode */
+@media screen and (orientation: landscape) {
+    .content {
+        padding: 10px;
+    }
+
+    .form-containerLog, .form-containerReg {
+        width: 70%;
+        max-width: 500px;
+    }
+}
