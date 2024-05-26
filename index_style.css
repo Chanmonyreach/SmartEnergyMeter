@@ -367,7 +367,7 @@ html, body {
     }
 
     #sidenav ul li a i{
-        font-size: 1.15em;
+        font-size: 100%;
         margin-right: 10px;
     }
 
