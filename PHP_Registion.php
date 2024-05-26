@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = sanitizeInput($_POST['email']);
 
     // Check if username already exists
-    $checkUsernameQuery = $conn->prepare("SELECT * FROM users WHERE username = ?");
+    $checkUsernameQuery = $conn->prepare("SELECT * FROM account_users WHERE username = ?");
     $checkUsernameQuery->bind_param("s", $newUsername);
     $checkUsernameQuery->execute();
     $result = $checkUsernameQuery->get_result();
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // Insert new user into the database
         $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-        $insertUserQuery = $conn->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
+        $insertUserQuery = $conn->prepare("INSERT INTO account_users (username, password, email) VALUES (?, ?, ?)");
         $insertUserQuery->bind_param("sss", $newUsername, $hashedPassword, $email);
         
         if ($insertUserQuery->execute()) {
@@ -51,4 +51,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $conn->close();
-
+?>
