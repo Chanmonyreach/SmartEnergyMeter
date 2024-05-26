@@ -419,7 +419,7 @@ html, body {
         margin-top: 1%;
         display: flex;
         justify-content: center;
-        gap: 5%; /* Increase the gap to create more space between icons */
+        gap: 30px; /* Increase the gap to create more space between icons */
     }
 
     .social-icons a {
@@ -427,7 +427,7 @@ html, body {
     }
 
     .social-icons a i {
-        font-size: 175%;
+        font-size: 1.75em;
     }
 
     .social-icons a:hover {
