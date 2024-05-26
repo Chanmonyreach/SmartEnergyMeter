@@ -363,7 +363,7 @@ html, body {
     }
 
     #sidenav {
-        width: 30%; /* Adjust sidebar width */
+        width: 40%; /* Adjust sidebar width */
         max-width: 200px; /* Limit maximum width */
     }
 
