@@ -54,12 +54,14 @@ document.addEventListener('DOMContentLoaded', function() {
             var Login_form = Login_forms[i];
             if (event.target != Login_form && !Login_form.contains(event.target) && !isLoginForm && !isRegisterForm) {
                 Login_form.style.display = 'none';
+                resetForm(Login_form.querySelector('form'));
             }
         }
         for (var i = 0; i < Register_forms.length; i++) {
             var Register_form = Register_forms[i];
             if (event.target != Register_form && !Register_form.contains(event.target) && !isLoginForm && !isRegisterForm) {
                 Register_form.style.display = 'none';
+                resetForm(Register_form.querySelector('form'));
             }
         }
     });
@@ -79,12 +81,18 @@ document.addEventListener('DOMContentLoaded', function() {
     function openLoginForm() {
         loginForm.style.display = 'block';
         registerForm.style.display = 'none';
+        resetForm(loginForm.querySelector('form'));
         closeSidebar();
     }
 
     function openRegisterForm() {
         registerForm.style.display = 'block';
         loginForm.style.display = 'none';
+        resetForm(registerForm.querySelector('form'));
         closeSidebar();
+    }
+
+    function resetForm(form) {
+        form.reset();
     }
 });
