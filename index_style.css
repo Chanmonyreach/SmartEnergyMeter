@@ -428,125 +428,6 @@ html, body {
         transform: scale(1.2); /* Enlarge the icon when hovered */
     }
 
-    /* Login Form Styles */
-    .form-containerLog {
-        display: none; /* Initially hidden */
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(0, 150, 136, 0.7); /* Semi-transparent background */
-        backdrop-filter: blur(6px); /* Apply blur effect */
-        padding: 40px;
-        width: 80%; /* Adjusted width */
-        max-width: 400px; /* Maximum width */
-        height: auto; /* Adjusted height */
-        border-radius: 10px;
-        z-index: 4;
-    }
-
-    .form-containerLog form {
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Center align form elements */
-    }
-
-    .form-containerLog label, .form-containerLog input, .form-containerLog button {
-        margin: 10px 0;
-    }
-
-    .form-containerLog input, .form-containerLog button {
-        padding: 10px;
-        width: 100%; /* Full width input and button */
-        box-sizing: border-box; /* Include padding and border in width */
-    }
-
-    .input-containerLog {
-        display: flex;
-        align-items: center;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 5px;
-        margin-bottom: 10px;
-        width: 100%; /* Full width input container */
-    }
-
-    .input-containerLog label {
-        margin-right: 10px;
-    }
-
-    .input-containerLog input {
-        flex: 1;
-        border: none;
-        outline: none;
-        padding: 8px;
-        border-radius: 5px;
-        width: calc(100% - 30px); /* Adjusted width */
-    }
-
-    .input-containerLog i {
-        color: #fff;
-    }
-
-    /* Register Form Styles */
-    .form-containerReg {
-        display: none; /* Initially hidden */
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(0, 150, 136, 0.7); /* Semi-transparent background */
-        backdrop-filter: blur(6px); /* Apply blur effect */
-        padding: 40px;
-        width: 80%; /* Adjusted width */
-        max-width: 400px; /* Maximum width */
-        height: auto; /* Adjusted height */
-        border-radius: 10px;
-        z-index: 4;
-    }
-
-    .form-containerReg form {
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Center align form elements */
-    }
-
-    .form-containerReg label, .form-containerReg input, .form-containerReg button {
-        margin: 10px 0;
-    }
-
-    .form-containerReg input, .form-containerReg button {
-        padding: 10px;
-        width: 100%; /* Full width input and button */
-        box-sizing: border-box; /* Include padding and border in width */
-    }
-
-    .input-containerReg {
-        display: flex;
-        align-items: center;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 5px;
-        margin-bottom: 10px;
-        width: 100%; /* Full width input container */
-    }
-
-    .input-containerReg label {
-        margin-right: 10px;
-    }
-
-    .input-containerReg input {
-        flex: 1;
-        border: none;
-        outline: none;
-        padding: 8px;
-        border-radius: 5px;
-        width: calc(100% - 30px); /* Adjusted width */
-    }
-
-    .input-containerReg i {
-        color: #fff;
-    }
 }
 
 /* For larger screens */
@@ -587,6 +468,125 @@ html, body {
         width: 90%;
         max-width: 400px;
     }
+        /* Login Form Styles */
+        .form-containerLog {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 150, 136, 0.7); /* Semi-transparent background */
+            backdrop-filter: blur(6px); /* Apply blur effect */
+            padding: 40px;
+            width: 80%; /* Adjusted width */
+            max-width: 400px; /* Maximum width */
+            height: auto; /* Adjusted height */
+            border-radius: 10px;
+            z-index: 4;
+        }
+    
+        .form-containerLog form {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align form elements */
+        }
+    
+        .form-containerLog label, .form-containerLog input, .form-containerLog button {
+            margin: 10px 0;
+        }
+    
+        .form-containerLog input, .form-containerLog button {
+            padding: 10px;
+            width: 100%; /* Full width input and button */
+            box-sizing: border-box; /* Include padding and border in width */
+        }
+    
+        .input-containerLog {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            margin-bottom: 10px;
+            width: 100%; /* Full width input container */
+        }
+    
+        .input-containerLog label {
+            margin-right: 10px;
+        }
+    
+        .input-containerLog input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 8px;
+            border-radius: 5px;
+            width: calc(100% - 30px); /* Adjusted width */
+        }
+    
+        .input-containerLog i {
+            color: #fff;
+        }
+    
+        /* Register Form Styles */
+        .form-containerReg {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 150, 136, 0.7); /* Semi-transparent background */
+            backdrop-filter: blur(6px); /* Apply blur effect */
+            padding: 40px;
+            width: 80%; /* Adjusted width */
+            max-width: 400px; /* Maximum width */
+            height: auto; /* Adjusted height */
+            border-radius: 10px;
+            z-index: 4;
+        }
+    
+        .form-containerReg form {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align form elements */
+        }
+    
+        .form-containerReg label, .form-containerReg input, .form-containerReg button {
+            margin: 10px 0;
+        }
+    
+        .form-containerReg input, .form-containerReg button {
+            padding: 10px;
+            width: 100%; /* Full width input and button */
+            box-sizing: border-box; /* Include padding and border in width */
+        }
+    
+        .input-containerReg {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            margin-bottom: 10px;
+            width: 100%; /* Full width input container */
+        }
+    
+        .input-containerReg label {
+            margin-right: 10px;
+        }
+    
+        .input-containerReg input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 8px;
+            border-radius: 5px;
+            width: calc(100% - 30px); /* Adjusted width */
+        }
+    
+        .input-containerReg i {
+            color: #fff;
+        }
 }
 
 /* Landscape mode */
@@ -605,4 +605,121 @@ html, body {
         width: 70%;
         max-width: 500px;
     }
+        /* Login Form Styles */
+        .form-containerLog {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 150, 136, 0.7); /* Semi-transparent background */
+            backdrop-filter: blur(6px); /* Apply blur effect */
+            padding: 40px;
+            width: 80%; /* Adjusted width */
+            max-width: 400px; /* Maximum width */
+            height: auto; /* Adjusted height */
+            border-radius: 10px;
+            z-index: 4;
+        }
+    
+        .form-containerLog form {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align form elements */
+        }
+    
+        .form-containerLog label, .form-containerLog input, .form-containerLog button {
+            margin: 10px 0;
+        }
+    
+        .form-containerLog input, .form-containerLog button {
+            padding: 10px;
+            width: 100%; /* Full width input and button */
+            box-sizing: border-box; /* Include padding and border in width */
+        }
+    
+        .input-containerLog {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            margin-bottom: 10px;
+            width: 100%; /* Full width input container */
+        }
+    
+        .input-containerLog label {
+            margin-right: 10px;
+        }
+    
+        .input-containerLog input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 8px;
+            border-radius: 5px;
+            width: calc(100% - 30px); /* Adjusted width */
+        }
+    
+        .input-containerLog i {
+            color: #fff;
+        }
+    
+        /* Register Form Styles */
+        .form-containerReg {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 150, 136, 0.7); /* Semi-transparent background */
+            backdrop-filter: blur(6px); /* Apply blur effect */
+            padding: 20px;
+            width: 30%; /* Adjusted width */
+            max-width: 400px; /* Maximum width */
+            height: auto; /* Adjusted height */
+            border-radius: 10px;
+            z-index: 4;
+        }
+    
+        .form-containerReg form {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align form elements */
+        }
+    
+        .form-containerReg label, .form-containerReg input, .form-containerReg button {
+            margin: 10px 0;
+        }
+    
+        .form-containerReg input, .form-containerReg button {
+            padding: 10px;
+            width: 90%; /* Full width input and button */
+            box-sizing: border-box; /* Include padding and border in width */
+        }
+    
+        .input-containerReg {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            margin-bottom: 10px;
+            width: 90%;
+        }
+    
+        .input-containerReg label {
+            margin-right: 10px;   
+        }
+    
+        .input-containerReg input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        .input-containerReg i {
+            color: #fff;
+        }
 }
