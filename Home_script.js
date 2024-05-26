@@ -6,12 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const topnavContents = document.querySelectorAll('#topnav nav, #topnav ul');
     const logo = document.querySelector('#topnav img.logo');
 
+    
     let sidebarOpened = false;
 
     function setActiveLink(link) {
         navLinks.forEach(navLink => navLink.classList.remove('active'));
         link.classList.add('active');
     }
+
+    sidenavElement.style.right = "-40%";
 
     function openSidebar() {
         sidenavElement.style.right = "0";
