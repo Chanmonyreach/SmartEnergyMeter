@@ -37,7 +37,7 @@ html, body {
 }
 
 #topnav img.logo {
-    width: 200px; /* Increase the width to make the logo bigger */
+    width: 130px; /* Increase the width to make the logo bigger */
     transition: width 0.3s ease; /* Add transition for smooth resizing */
 }
 
@@ -50,7 +50,7 @@ html, body {
 
 #topnav ul li {
     margin-right: 20px;
-    padding-top: 80px;
+    padding-top: 100px;
 }
 
 #topnav ul li a{
@@ -67,7 +67,7 @@ html, body {
 #topnav ul li a {
     text-decoration: none;
     color: #fff;
-    font-size:x-large;
+    font-size:large;
     position: relative; /* Add position relative to create a positioning context */
 }
 
@@ -257,9 +257,9 @@ p {
         padding-left:30%;
         padding-top: 5%;
     }
-    
     #topnav ul li {
         margin-right: 10%;
+        padding-top: 55%;
     }
     
     #topnav ul li a{
