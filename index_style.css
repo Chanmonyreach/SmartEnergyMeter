@@ -364,7 +364,7 @@ html, body {
 
     #sidenav {
         width: 40%; /* Adjust sidebar width */
-        max-width: 200px; /* Limit maximum width */
+        max-width: none; /* Limit maximum width */
     }
 
     .content h1 {
@@ -571,6 +571,10 @@ html, body {
 
 /* Portrait mode */
 @media screen and (orientation: portrait) {
+    #sidenav {
+        width: 40%; /* Adjust sidebar width */
+        max-width: none; /* Limit maximum width */
+    }
     .content {
         padding: 20px;
     }
