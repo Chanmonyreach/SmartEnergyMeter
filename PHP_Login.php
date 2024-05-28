@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = ""; 
 $dbname = "smart_energy_meter_account";
 
 // Create connection
@@ -16,6 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $_POST['username'];
     $pass = $_POST['password'];
 
+
+    // Prepare and execute login query
     $loginQuery = $conn->prepare("SELECT password FROM account_users WHERE username = ?");
     $loginQuery->bind_param("s", $user);
     $loginQuery->execute();
@@ -24,12 +26,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         if (password_verify($pass, $row['password'])) {
-            echo "Login successful";
+            echo "<script>alert('Login successful'); window.location.href = 'Login.html';</script>";
+            exit; // Stop further execution after redirection
         } else {
-            echo "Invalid credentials";
+            echo "<script>alert('Invalid credentials');window.location.href = 'index.html';</script>";
         }
     } else {
-        echo "Invalid credentials";
+        echo "<script>alert('Invalid credentials');window.location.href = 'index.html';</script>";
     }
 
     $loginQuery->close();
