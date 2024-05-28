@@ -4,6 +4,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const topnav = document.getElementById('topnav');
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
+    const loginBtn = document.getElementById('loginBtn');
+    const registerBtn = document.getElementById('sidenavRegisterBtn');
+    const menuBtn = document.getElementById('menuBtn');
+    const registerSubmitBtn = document.querySelector('#registerForm button[type="submit"]');
+    const usernameInput = document.getElementById('newUsername');
+    const usernameAvailability = document.getElementById('usernameAvailability');
+    const registerButton = document.getElementById('registerForm_button');
 
     // Set initial styles for elements
     sidenavElement.style.right = "-40%";
@@ -29,15 +36,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Function to toggle the display of the login form
-    if (document.getElementById('loginBtn')) {
-        document.getElementById('loginBtn').onclick = function() {
+    if (loginBtn) {
+        loginBtn.onclick = function() {
             openLoginForm();
         }
     }
 
     // Function to toggle the display of the register form
-    if (document.getElementById('sidenavRegisterBtn')) {
-        document.getElementById('sidenavRegisterBtn').onclick = function() {
+    if (registerBtn) {
+        registerBtn.onclick = function() {
             openRegisterForm();
         }
     }
@@ -46,8 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('click', function(event) {
         var Login_forms = document.getElementsByClassName('form-containerLog');
         var Register_forms = document.getElementsByClassName('form-containerReg');
-        var loginBtn = document.getElementById('loginBtn');
-        var registerBtn = document.getElementById('sidenavRegisterBtn');
         var clickedElement = event.target;
         var isLoginForm = (clickedElement.id === 'loginBtn' || clickedElement === loginBtn);
         var isRegisterForm = (clickedElement.id === 'sidenavRegisterBtn' || clickedElement === registerBtn);
@@ -91,4 +96,92 @@ document.addEventListener('DOMContentLoaded', function() {
     function resetForm(form) {
         form.reset();
     }
+
+    if (loginBtn) {
+        loginBtn.addEventListener("click", () => {
+            loginForm.classList.toggle("active");
+            registerForm.classList.remove("active");
+        });
+    }
+
+    if (registerBtn) {
+        registerBtn.addEventListener("click", () => {
+            registerForm.classList.toggle("active");
+            loginForm.classList.remove("active");
+        });
+    }
+
+    if (menuBtn) {
+        menuBtn.addEventListener("click", () => {
+            sidenav.classList.toggle("open");
+        });
+    }
+
+    // Add event listener to check username availability while typing
+    usernameInput.addEventListener('input', function() {
+        const newUsername = usernameInput.value;
+
+        // Perform an AJAX request to check if the username exists
+        if(registerSubmitBtn.disabled == true){
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'check_username.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.exists) {
+                            // Username already exists, show error message
+                            usernameAvailability.textContent = " *unavailable.";
+                            usernameAvailability.style.color = "red";
+                            // Add animation class to the register button
+                            registerSubmitBtn.classList.add('shake-animation');
+                            registerSubmitBtn.disabled = true;
+                        } else {
+                            // Username does not exist, show success message
+                            usernameAvailability.textContent = " *available.";
+                            usernameAvailability.style.color = "green";
+                            // Remove animation class from the register button
+                            registerSubmitBtn.classList.remove('shake-animation');
+                            registerSubmitBtn.disabled = false;
+                        }
+                    } else {
+                        console.error('Error checking username:', xhr.status);
+                    }
+                }
+            };
+            xhr.send('username=' + newUsername);
+        } else {
+            // Send the AJAX request if the register button is enabled
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'check_username.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.exists) {
+                            // Username already exists, show error message
+                            usernameAvailability.textContent = " *unavailable.";
+                            usernameAvailability.style.color = "red";
+                            // Add animation class to the register button
+                            registerSubmitBtn.classList.add('shake-animation');
+                            registerSubmitBtn.disabled = true;
+                        } else {
+                            // Username does not exist, show success message
+                            usernameAvailability.textContent = " *available.";
+                            usernameAvailability.style.color = "green";
+                            // Remove animation class from the register button
+                            registerSubmitBtn.classList.remove('shake-animation');
+                            registerSubmitBtn.disabled = false;
+                        }
+                    } else {
+                        console.error('Error checking username:', xhr.status);
+                    }
+                }
+            };
+            xhr.send('username=' + newUsername);
+        }
+    });
+
 });
