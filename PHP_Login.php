@@ -28,10 +28,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<script>alert('Login successful'); window.location.href = 'login.html';</script>";
             exit; // Add exit to stop further execution
         } else {
-            echo "<script>alert('Invalid credentials');</script>";
+            echo "<script>alert('Invalid credentials');window.location.href = 'index.html';</script>";
         }
     } else {
-        echo "<script>alert('Invalid credentials');</script>";
+        echo "<script>alert('Invalid credentials');window.location.href = 'index.html';</script>";
     }
 
     $loginQuery->close();
