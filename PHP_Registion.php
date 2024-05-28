@@ -1,5 +1,5 @@
 <?php
-$servername = "127.0.0.1";
+$servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "smart_energy_meter_account";
@@ -23,6 +23,12 @@ CREATE TABLE IF NOT EXISTS account_users (
 ";
 if ($conn->query($sql) === FALSE) {
     die("Error creating table: " . $conn->error);
+}
+
+// Reset auto-increment value
+$sql_reset_auto_increment = "ALTER TABLE account_users AUTO_INCREMENT = 1;";
+if ($conn->query($sql_reset_auto_increment) === FALSE) {
+    echo "Error resetting auto-increment value: " . $conn->error;
 }
 
 // Function to sanitize user input
