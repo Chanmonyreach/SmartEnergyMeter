@@ -6,6 +6,10 @@
     <title>Smart Energy Meter</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="Login_style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="Gauge-Chart.js" defer></script>
+    <script src="line-Chart.js" defer></script>
+    <script src="Login_script.js" defer></script>
 </head>
 <body>
     <section id="banner"> 
@@ -30,15 +34,32 @@
         </div>
         <div class="content-wrapper">
             <section id="home" class="content-section active">
+                <h1>Smart Power Monitoring</h1>
+                <div class="chart-container">
+                    <div class="chart">
+                        <canvas id="Powers-Gauge-Chart" width="400" height="400"></canvas>
+                        <a>Power Usage</a>
+                    </div>
+                    <div class="chart">
+                        <canvas id="line-Chart" width="800" height="400"></canvas>
+                        <b>Power Usage Monthly</b>
+                    </div>
+                </div>
+                <ul>
+                    <li><a>+Power Usage</a></li>
+                    <li><b>Is a chart that display the realtime update of power usage in your home</b></li>
+                    <li><a>+Power Usage Monthly</a></li>
+                    <li><b>Is a chart that display the monthly update of power usage in your home</b></li>
+                </ul>
             </section>
             <section id="news" class="content-section">
+                <ul>
+                    <li><a>a</a></li>
+                </ul>
             </section>
-            <section id="products" class="content-section">
-            </section>
-            <section id="shop" class="content-section">
-            </section>
-        </div>           
+            <section id="products" class="content-section"></section>
+            <section id="shop" class="content-section"></section>
+        </div>    
     </section>
-    <script src="Login_script.js"></script>
 </body>
 </html>
