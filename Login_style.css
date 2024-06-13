@@ -117,6 +117,76 @@ body.translate-background {
     backdrop-filter: blur(10px);
 }
 
+.content-section ul{
+    margin-top: 50px;
+}
+
+.content-section ul li a {
+    color: #fff;
+    font-size: 2em;
+    position: relative; /* Add position relative to create a positioning context */
+}
+
+.content-section ul li b {
+    margin-left: 50px;
+    color: #fff;
+    font-size: 1.5em;
+    position: relative; /* Add position relative to create a positioning context */
+}
+.content-section h1{
+    margin-left: 250px;
+    color: #fff;
+    font-size: 5em;
+    position: relative; /* Add position relative to create a positioning context */
+}
+
+.chart-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.chart canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.chart a {
+    margin-left: 275px;
+    color: #fff;
+    font-size: 2.5em;
+    position: relative; /* Add position relative to create a positioning context */
+}
+
+.chart b {
+    margin-left: 200px;
+    color: #fff;
+    font-size: 2.5em;
+    position: relative; /* Add position relative to create a positioning context */
+}
+
+#Powers-Gauge-Chart {
+    margin-left: 200px;
+    background-color: #3b3b3b; /* Background color of the gauge */
+    width: 400px; /* Adjust width as needed */
+    height: 400px; /* Adjust height as needed */
+    position: relative;
+    display: block;
+}
+
+#line-Chart {
+    margin-right: 100px;
+    background-color: #3b3b3b; /* Background color of the gauge */
+    width: 800px; /* Adjust width as needed */
+    height: 400px; /* Adjust height as needed */
+    position: relative;
+    display: block;
+}
+
 .content-section.active {
     left: 0;
     opacity: 1;
@@ -140,16 +210,6 @@ body.translate-background {
 .content-section.right-out {
     left: 100%;
     opacity: 0;
-}
-
-h2 {
-    font-size: 2em;
-    color: #333;
-}
-
-p {
-    font-size: 1em;
-    color: #666;
 }
 
 #sidenav {
@@ -215,6 +275,7 @@ p {
     right: 1px; /* Adjust the distance from the right */
     cursor: pointer; /* Add cursor pointer for better UX */
 }
+
 /* Media Queries */
 
 /* For smaller screens */
