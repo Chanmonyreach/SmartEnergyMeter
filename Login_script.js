@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('#topnav ul li a:not(#Login)');
+    const navLinks = document.querySelectorAll('#topnav ul li a:not(#goBack)');
     const sections = document.querySelectorAll('.content-section');
     const sidenavElement = document.getElementById('sidenav');
     const accountBtnTopbar = document.getElementById('accountBtnTopbar');
     const topnav = document.getElementById('topnav');
+    const topnavContents = document.querySelectorAll('#topnav > *:not(img.LOGO)'); // Select all topbar contents except the logo
+    const logo = document.querySelector('#topnav img.LOGO');
 
     function setActiveLink(link) {
         navLinks.forEach(navLink => navLink.classList.remove('active'));
@@ -44,23 +46,39 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    sidenavElement.style.right = "-250px";
+    sidenavElement.style.right = "-40%";
 
     accountBtnTopbar.onclick = function() {
-        if (sidenavElement.style.right === "-250px") {
-            sidenavElement.style.right = "0px";
-            topnav.style.right = "280px"; // Adjust the value based on the width of the sidebar
+        if (sidenavElement.style.right === "-40%") {
+            openSidebar();
         } else {
-            sidenavElement.style.right = "-250px";
-            topnav.style.right = "30px"; // Reset the position of the topnav when the sidebar is closed
+            closeSidebar();
         }
     };
+
+    function openSidebar() {
+        sidenavElement.style.right = "0";
+        topnav.style.right = "44%"; // Adjust the value based on the width of the sidebar
+        topnavContents.forEach(content => {
+            content.style.transform = "translateX(-4%)"; // Move topbar content along with sidebar
+        });
+        accountBtnTopbar.classList.add('hide-account-icon'); // Hide the account icon
+    }
+
+    function closeSidebar() {
+        sidenavElement.style.right = "-40%";
+        topnav.style.right = "4%"; // Reset the position of the topnav when the sidebar is closed
+        topnavContents.forEach(content => {
+            content.style.transform = "translateX(0)"; // Reset the position of topbar content
+        });
+        accountBtnTopbar.classList.remove('hide-account-icon'); // Show the account icon
+    }
 
     // Close the sidebar when clicking outside of it
     document.addEventListener('click', function(e) {
         if (!sidenavElement.contains(e.target) && !accountBtnTopbar.contains(e.target)) {
-            sidenavElement.style.right = "-250px";
-            topnav.style.right = "30px"; // Reset the position of the topnav when the sidebar is closed
+            closeSidebar();
+            accountBtnTopbar.classList.remove('hide-account-icon'); // Show the account icon
         }
     });
 });
