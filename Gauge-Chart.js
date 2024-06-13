@@ -1,13 +1,35 @@
-document.addEventListener('DOMContentLoaded', function(){
-      // Function to draw and animate the gauge chart
-      function drawGauge(value, targetValue = 75) {
-        const canvas = document.getElementById('Powers-Gauge-Chart');
-        const ctx = canvas.getContext('2d');
+document.addEventListener('DOMContentLoaded', function() {
+    const canvas = document.getElementById('Powers-Gauge-Chart');
+    const ctx = canvas.getContext('2d');
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = 150;
 
-        const centerX = canvas.width / 2;
-        const centerY = canvas.height / 2;
-        const radius = 150;
+    // WebSocket connection to receive updates from ESP8266
+    const socket = new WebSocket('ws://192.168.3.65:81/'); // Replace with your ESP8266 WebSocket server IP address
 
+    socket.onopen = function() {
+        console.log('WebSocket connected.');
+    };
+
+    socket.onmessage = function(event) {
+        const data = JSON.parse(event.data);
+        const value = parseFloat(data.value); // Parse the value as a float
+        if (!isNaN(value)) {
+            updateGaugeValue(value); // Update the gauge chart with the received value
+        }
+    };
+
+    socket.onerror = function(error) {
+        console.error('WebSocket Error:', error);
+    };
+
+    socket.onclose = function(event) {
+        console.log('WebSocket Closed:', event);
+    };
+
+    // Function to draw and animate the gauge chart
+    function drawGauge(value, targetValue = 75) {
         // Clear the canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -93,29 +115,10 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     }
 
-    // Function to animate the gauge chart
-    function animateGauge() {
-        let value = 0;
-        let increasing = true;
-
-        function updateGauge() {
-            drawGauge(value);
-
-            if (increasing) {
-                value++;
-                if (value >= 100) increasing = false;
-            } else {
-                value--;
-                if (value <= 0) increasing = true;
-            }
-
-            setTimeout(updateGauge, 20); // Update every 20 milliseconds for smooth animation
-        }
-
-        updateGauge();
+    // Function to update gauge value based on data received from WebSocket
+    function updateGaugeValue(value) {
+        // Assuming value is between 0 and 100 (percentage)
+        drawGauge(value); // Update the gauge chart with the received value
     }
-
-    // Start the gauge chart animation
-    animateGauge();
 
 });
