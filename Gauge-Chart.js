@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const radius = 150;
 
     // WebSocket connection to receive updates from ESP8266
-    const socket = new WebSocket('ws://192.168.3.65:81/'); // Replace with your ESP8266 WebSocket server IP address
+    const socket = new WebSocket('wss://192.168.3.65:81/'); // Replace with your ESP8266 WebSocket server IP address
 
     socket.onopen = function() {
         console.log('WebSocket connected.');
