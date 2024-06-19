@@ -13,10 +13,18 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     socket.onmessage = function(event) {
-        const data = JSON.parse(event.data);
-        const value = parseFloat(data.value); // Parse the value as a float
-        if (!isNaN(value)) {
-            updateGaugeValue(value); // Update the gauge chart with the received value
+        try {
+            const data = JSON.parse(event.data);
+            const value = parseFloat(data.value); // Parse the value as a float
+            if (!isNaN(value)) {
+                updateGaugeValue(value); // Update the gauge chart with the received value
+            } else {
+                console.warn('Received NaN value:', data.value);
+                updateGaugeValue(0); // Display 0 if received value is NaN
+            }
+        } catch (error) {
+            console.error('Error parsing WebSocket message:', error);
+            updateGaugeValue(0); // Display 0 on error
         }
     };
 
@@ -26,8 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     socket.onclose = function(event) {
         console.log('WebSocket Closed:', event);
+        setGaugeToZero(); // Reset gauge when WebSocket connection is closed
     };
-
+    
     // Function to draw and animate the gauge chart
     function drawGauge(value, targetValue = 75) {
         // Clear the canvas
@@ -115,9 +124,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Function to update gauge value based on data received from WebSocket
     function updateGaugeValue(value) {
         // Assuming value is between 0 and 100 (percentage)
-        drawGauge(value); // Update the gauge chart with the received value
+        if (!isNaN(value)) {
+            drawGauge(value); // Update the gauge chart with the received value
+        } else {
+            console.warn('Received NaN value:', value);
+            drawGauge(0); // Display 0 if received value is NaN
+        }
     }
+    
 });
