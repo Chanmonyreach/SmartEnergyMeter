@@ -124,14 +124,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Function to update gauge value based on data received from WebSocket
     function updateGaugeValue(value) {
         // Assuming value is between 0 and 100 (percentage)
-        if (!isNaN(value)) {
-            drawGauge(value); // Update the gauge chart with the received value
-        } else {
-            console.warn('Received NaN value:', value);
-            drawGauge(0); // Display 0 if received value is NaN
-        }
+        drawGauge(value); // Update the gauge chart with the received value
     }
-    
+        // Set gauge value to 0 initially or when WebSocket is not connected
+    function setGaugeToZero() {
+        drawGauge(0); // Draw gauge with value 0
+    }
+
+    // Call setGaugeToZero when WebSocket is not open
+    if (socket.readyState !== WebSocket.OPEN) {
+        setGaugeToZero();
+    }
 });
